@@ -17,13 +17,32 @@ with open(input_filename) as country_file:
             'timezone': timezone,
             'currency': currency,
         }
+
+
         countries[country.casefold()] = country_dict
+        # countries[code.casefold()] = country_dict
     print(countries)
 
-user_country = input("Please enter a country to get the capital city: ")
-user_dict = countries[user_country]
-user_capital = user_dict['capital']
-print(user_capital)
+    for country_name, country_info in countries.items():
+        for key, value in country_info.items():
+            if not value:
+                print(country_name.capitalize() + " does not have a " + key)
+                # print(f"{country_info[key]} does not have a {value}")
+        # if not country_info['capital']:
+        #     print(f"{country_info['name']} does not have a capital.")
+
+
+# while True:
+    # user_country = input("Please enter a country or country code to get the capital city: ")
+    # country_key = user_country.casefold()
+    # if country_key in countries:
+    #     country_data = countries[country_key]
+    #     print(f"The capital of {user_country} is {country_data['capital']}")
+    # elif country_key == 'quit':
+    #     break
+    # else:
+    #     print(f"{country_key} is not a valid county.")
+
 
 
 
